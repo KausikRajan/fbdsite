@@ -152,7 +152,54 @@
             margin-bottom: 0.25rem;
         }
 
-        /* ===== PORTFOLIO SECTION ===== */
+        /* ===== LATEST TAG STYLES ===== */
+        .latest-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(45deg, #10b981, #3b82f6);
+            color: white;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            z-index: 3;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+        }
+
+        .latest-tag::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(45deg, #10b981, #3b82f6, #8b5cf6, #ec4899);
+            background-size: 300% 300%;
+            border-radius: 0.75rem;
+            z-index: -1;
+            animation: gradient-rotate 3s ease infinite;
+        }
+
+        @keyframes gradient-rotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .latest-tag::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 0.75rem;
+            z-index: -1;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
         .portfolio-overlay {
             position: absolute;
             inset: 0;
@@ -922,7 +969,8 @@
                 image: "Aspect-ratio-16x9.svg.png",
                 youtubeUrl: "https://youtube.com",
                 instagramUrl: null,
-                comingSoon: false
+                comingSoon: false,
+                tag: 'Exclusive'
             },
             {
                 title: "Spotify Brand Advertisement",
@@ -938,7 +986,8 @@
                 image: "Thumbnails/minecraft rodslinger.jpg",
                 youtubeUrl: "https://youtu.be/OV8mDFfbLhs",
                 instagramUrl: "https://www.instagram.com/reel/DIHlHGYTdsb/?igsh=MWl5NmQ2eTMybWljNA==",
-                comingSoon: false
+                comingSoon: false,
+                tag: '3D Animated'
             },
             {
                 title: "Cosmic Byte Ares Product Demo",
@@ -994,6 +1043,7 @@
                 } else {
                     portfolioItem.innerHTML = `
                         <div class="relative">
+                            ${item.tag ? `<div class="latest-tag">${item.tag}</div>` : ''}
                             <div class="portfolio-overlay">
                                 ${item.instagramUrl ? `
                                     <a href="${item.instagramUrl}" target="_blank" class="platform-button instagram-button">
