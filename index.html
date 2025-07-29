@@ -20,6 +20,131 @@
             }
         }
 
+                @keyframes expand-container {
+        0% {
+            transform: scaleX(0) scaleY(1);
+        }
+        25% {
+            transform: scaleX(1.3) scaleY(0.7);
+        }
+        40% {
+            transform: scaleX(0.85) scaleY(1.15);
+        }
+        50% {
+            transform: scaleX(1.08) scaleY(0.92);
+        }
+        60% {
+            transform: scaleX(0.98) scaleY(1.02);
+        }
+        67% {
+            transform: scaleX(1.02) scaleY(0.99);
+        }
+        71% {
+            transform: scaleX(0.995) scaleY(1.005);
+        }
+        100% {
+            transform: scaleX(1) scaleY(1);
+        }
+        }
+
+        /* Floating Elements Animation */
+        .floating-elements {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 15%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 25%;
+            right: 20%;
+            animation-delay: -5s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, 25px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 50px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-50px, 25px) rotate(270deg);
+            }
+        }
+
+        /* Hero Section Styles */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 0.25rem;
+        }
+        
         .portfolio-overlay {
             position: absolute;
             inset: 0;
@@ -209,10 +334,25 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .gradient-bg {
-            background: linear-gradient(-45deg, #1e293b, #312e81, #581c87, #1e293b);
+    .gradient-bg {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #0f172a);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
         .logo-pulse {
             animation: pulse 3s ease-in-out infinite;
@@ -444,24 +584,96 @@
 
     <!-- Hero Section -->
     <section class="gradient-bg pt-32 pb-20 px-4">
-        <div class="container mx-auto text-center">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20copy%202-udJB3vM68KHvRDZZaiuXfGXD3rzXhY.png" alt="Fist Bump Developers Logo" class="w-32 h-32 mx-auto mb-8 logo-pulse shadow-lg shadow-emerald-500/20 rounded-full">
-            
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Transform Ideas Into Motion Magic
-            </h1>
-            
-            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10">
-                We're a creative duo specializing in game trailers and motion graphics. Currently building our portfolio with select projects that showcase our passion for bringing digital worlds to life.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="px-8 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-medium hover:shadow-lg hover:shadow-emerald-500/30 transition-all btn-light-sweep">
-                    Start Your Project
-                </a>
-                <a href="#portfolio" class="px-8 py-3 rounded-full border-2 border-emerald-400 text-emerald-400 font-medium hover:bg-emerald-400/10 transition btn-light-sweep">
-                    View Our Work
-                </a>
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-element w-16 h-16">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-emerald-400">
+                    <polygon points="50,10 90,90 10,90" />
+                </svg>
+            </div>
+            <div class="floating-element w-20 h-20">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-blue-400">
+                    <circle cx="50" cy="50" r="40" />
+                </svg>
+            </div>
+            <div class="floating-element w-12 h-12">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-purple-400">
+                    <rect x="20" y="20" width="60" height="60" rx="15" />
+                </svg>
+            </div>
+        </div>
+        
+        <div class="container mx-auto hero-content">
+            <div class="max-w-5xl mx-auto text-center">
+                <!-- Logo with enhanced styling -->
+                <div class="logo-container mb-8">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20copy%202-udJB3vM68KHvRDZZaiuXfGXD3rzXhY.png" alt="Fist Bump Developers Logo" class="w-24 h-24 mx-auto logo-pulse shadow-2xl shadow-emerald-500/30 rounded-full">
+                </div>
+                
+                <!-- Main headline with improved typography -->
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight text-glow">
+                    Transform Ideas Into<br>
+                    <span class="text-white">Motion Magic</span>
+                </h1>
+                
+                <!-- Enhanced description -->
+                <p class="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+                    We're a creative duo specializing in <span class="text-emerald-400 font-semibold">game trailers</span> and <span class="text-blue-400 font-semibold">motion graphics</span>. Currently building our portfolio with select projects that showcase our passion for bringing digital worlds to life.
+                </p>
+                
+                <!-- Badges -->
+                <div class="hero-badges">
+                    <span class="badge">🎮 Game Trailers</span>
+                    <span class="badge">🎨 Motion Graphics</span>
+                    <span class="badge">🚀 3D Animation</span>
+                    <span class="badge">⚡ Quick Turnaround</span>
+                </div>
+                
+                <!-- Stats -->
+                <div class="stats-grid max-w-3xl mx-auto mb-10">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="text-sm text-slate-400">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="text-sm text-slate-400">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5★</div>
+                        <div class="text-sm text-slate-400">Average Rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">48h</div>
+                        <div class="text-sm text-slate-400">Average Delivery</div>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons with improved styling -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="px-10 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/40 transition-all transform hover:scale-105 btn-light-sweep">
+                        🚀 Start Your Project
+                    </a>
+                    <a href="#portfolio" class="px-10 py-4 rounded-full border-2 border-emerald-400 text-emerald-400 font-semibold text-lg hover:bg-emerald-400/20 transition-all transform hover:scale-105 btn-light-sweep backdrop-blur-sm">
+                        👀 View Our Work
+                    </a>
+                </div>
+                
+                <!-- Trust indicators -->
+                <div class="mt-12 flex justify-center items-center gap-6 text-slate-500 text-sm">
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                        Trusted by Indies
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4 text-blue-400"></i>
+                        Fast Delivery
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="star" class="w-4 h-4 text-purple-400"></i>
+                        Premium Quality
+                    </span>
+                </div>
             </div>
         </div>
     </section>
@@ -897,7 +1109,6 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
@@ -909,13 +1120,33 @@
                 }
             });
         });
-        // Add this wherever you want to trigger the animation
-const buttons = document.querySelectorAll('.platform-button');
-buttons.forEach((button, index) => {
-    setTimeout(() => {
-        button.classList.add('animate', 'light-sweep');
-    }, index * 100); // Stagger if multiple buttons
-});
+
+        // Initialize platform button animations
+        const buttons = document.querySelectorAll('.platform-button');
+        buttons.forEach((button, index) => {
+            setTimeout(() => {
+                button.classList.add('animate', 'light-sweep');
+            }, index * 100); // Stagger if multiple buttons
+        });
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-animate elements
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
