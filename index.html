@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fist Bump Developers | Motion Graphics Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes light-sweep {
+            0% {
+                background-position: -100% -100%;
+            }
+            20% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            z-index: 2;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            background-size: 200% 200%;
+            background-position: -100% -100%;
+            animation: light-sweep 5s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes spin-zoom {
+            0% {
+                transform: rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes light-sweep {
+    0% {
+        transform: translateX(-200%) rotate(25deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(200%) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+    @keyframes expand-container {
+        0% {
+            transform: scaleX(0) scaleY(1);
+        }
+        25% {
+            transform: scaleX(1.3) scaleY(0.7);
+        }
+        40% {
+            transform: scaleX(0.85) scaleY(1.15);
+        }
+        50% {
+            transform: scaleX(1.08) scaleY(0.92);
+        }
+        60% {
+            transform: scaleX(0.98) scaleY(1.02);
+        }
+        67% {
+            transform: scaleX(1.02) scaleY(0.99);
+        }
+        71% {
+            transform: scaleX(0.995) scaleY(1.005);
+        }
+        100% {
+            transform: scaleX(1) scaleY(1);
+        }
+    }
+
+    .platform-button.animate {
+    animation: expand-container 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.platform-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2) 25%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent
+    );
+    width: 50%;
+    height: 100%;
+    transform: translateX(-200%) rotate(25deg);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    border: none;
+}
+
+.platform-button.light-sweep::before {
+    animation: light-sweep 0.6s ease-out 0.4s;
+}
+.platform-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    overflow: hidden;
+    transform-origin: center;
+    position: relative; /* ADD THIS */
+}
+        .platform-button i {
+            animation: spin-zoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .platform-button span {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            /* animation: typewriter 1s steps(20) 0.5s forwards; */
+            /* width: 0; */
+            width: 100%;
+
+        }
+        .youtube-button {
+            background: linear-gradient(to bottom, #FF0000, #CC0000, #990000);
+            color: white;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.1);
+        }
+        .youtube-button:hover {
+            background: linear-gradient(to bottom, #DD0000, #990000, #660000);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
+        }
+        .instagram-button {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+        .instagram-button:hover {
+            opacity: 0.9;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 0; }
+            25% { opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+            75% { opacity: 0.9; }
+        }
+        @keyframes color-change {
+            0%, 100% { background: rgba(74, 222, 128, 0.8); }
+            50% { background: rgba(59, 130, 246, 0.8); }
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-bg {
+            background: linear-gradient(-45deg, #1e293b, #312e81, #581c87, #1e293b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        .logo-pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Service card specific hover shadows */
+        .card-hover.glow-emerald:hover {
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3);
+        }
+        .card-hover.glow-blue:hover {
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+        .card-hover.glow-purple:hover {
+            box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.3);
+        }
+        .card-hover.glow-pink:hover {
+            box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.3);
+        }
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 0.75rem;
+            padding: 2px;
+            background: none;
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .glow-border:hover::before {
+            opacity: 1;
+        }
+        
+        /* Service card specific glow colors */
+        .glow-border.glow-emerald::before {
+            background: linear-gradient(45deg, #10b981, #34d399);
+        }
+        .glow-border.glow-blue::before {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+        }
+        .glow-border.glow-purple::before {
+            background: linear-gradient(45deg, #a855f7, #c084fc);
+        }
+        .glow-border.glow-pink::before {
+            background: linear-gradient(45deg, #ec4899, #f472b6);
+        }
+
+        /* Button light sweep effect */
+        .btn-light-sweep {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-light-sweep::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2) 25%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                transparent
+            );
+            width: 50%;
+            height: 100%;
+            transform: translateX(-200%) skewX(25deg);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            transition: all 0.6s ease;
+        }
+        .btn-light-sweep:hover::before {
+            transform: translateX(400%) skewX(25deg);
+            opacity: 1;
+        }
+
+        /* Process Section Mobile Styles */
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .process-step-number {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: 4px solid #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.125rem;
+            color: white;
+            margin-bottom: 1rem;
+            z-index: 10;
+        }
+
+        .process-step-content {
+            width: 100%;
+        }
+
+        /* Desktop Process Styles */
+        @media (min-width: 768px) {
+            .process-step {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                margin-bottom: 4rem;
+            }
+
+            .process-step:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+
+            .process-step:nth-child(even) .process-step-content {
+                text-align: right;
+                padding-right: 4rem;
+                padding-left: .5rem;
+            }
+
+            .process-step:nth-child(odd) .process-step-content {
+                text-align: left;
+                padding-left: 4rem;
+                padding-right: .5rem;
+            }
+
+            .process-step-number {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 0;
+            }
+
+            .process-step:nth-child(even) .process-step-number {
+                left: calc(50% - 4rem);
+                transform: translateX(-50%);
+            }
+
+            .process-step:nth-child(odd) .process-step-number {
+                left: calc(50% + 4rem);
+                transform: translateX(-50%);
+            }
+
+            .process-step-content {
+                width: 50%;
+            }
+
+            /* Add connector lines */
+            .process-step::after {
+                content: '';
+                position: absolute;
+                width: 10rem;
+                height: 2px;
+                background: linear-gradient(to right, transparent, #10b981, transparent);
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+
+            .process-step:nth-child(odd)::after {
+                left: calc(50% + 1.5rem);
+                background: linear-gradient(45deg, transparent, #10b981, transparent);
+                transform: translateY(-50%) rotate(0);
+            }
+
+            .process-step:nth-child(even)::after {
+                right: calc(50% + 1.5rem);
+                background: linear-gradient(-45deg, transparent, #3b82f6, transparent);
+                transform: translateY(-50%) rotate(0);
+            }
+
+            .process-step:nth-child(3)::after {
+                background: linear-gradient(45deg, transparent, #8b5cf6, transparent);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white font-['Inter'] min-h-screen">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/50 border-b border-slate-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20copy%202-udJB3vM68KHvRDZZaiuXfGXD3rzXhY.png" alt="Fist Bump Developers Logo" class="w-12 h-12">
+                <span class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Fist Bump Developers</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#services" class="hover:text-emerald-400 transition">Services</a>
+                <a href="#portfolio" class="hover:text-purple-400 transition">Portfolio</a>
+                <a href="#process" class="hover:text-blue-400 transition">Process</a>
+                <a href="#contact" class="hover:text-pink-400 transition">Contact</a>
+            </nav>
+            
+            <button class="md:hidden" id="mobile-menu-button">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-slate-800/95 backdrop-blur-sm px-4 py-3 border-b border-slate-700">
+            <div class="flex flex-col space-y-3">
+                <a href="#services" class="py-2 hover:text-emerald-400 transition">Services</a>
+                <a href="#portfolio" class="py-2 hover:text-purple-400 transition">Portfolio</a>
+                <a href="#process" class="py-2 hover:text-blue-400 transition">Process</a>
+                <a href="#contact" class="py-2 hover:text-pink-400 transition">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg pt-32 pb-20 px-4">
+        <div class="container mx-auto text-center">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20copy%202-udJB3vM68KHvRDZZaiuXfGXD3rzXhY.png" alt="Fist Bump Developers Logo" class="w-32 h-32 mx-auto mb-8 logo-pulse shadow-lg shadow-emerald-500/20 rounded-full">
+            
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Transform Ideas Into Motion Magic
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10">
+                We're a creative duo specializing in game trailers and motion graphics. Currently building our portfolio with select projects that showcase our passion for bringing digital worlds to life.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-medium hover:shadow-lg hover:shadow-emerald-500/30 transition-all btn-light-sweep">
+                    Start Your Project
+                </a>
+                <a href="#portfolio" class="px-8 py-3 rounded-full border-2 border-emerald-400 text-emerald-400 font-medium hover:bg-emerald-400/10 transition btn-light-sweep">
+                    View Our Work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 px-4 bg-slate-800/20">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+                Emerging Specialist Duo with <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Quality-First Approach</span>
+            </h2>
+            
+            <p class="text-lg text-slate-300 mb-10 text-center">
+                We're a passionate creative team of two motion graphics artists, just starting our professional journey together. Our experience ranges from brand animations to game promotional content, and we're committed to delivering exceptional quality that helps indie developers stand out.
+            </p>
+            
+            <div class="bg-slate-800/50 rounded-xl p-6 mb-10 text-center border border-slate-700">
+                <p class="text-emerald-400 font-medium">
+                    Currently offering competitive rates for indie developers
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Quality-First Mindset</h3>
+                    </div>
+                    <p class="text-slate-300">
+                        Every animation is crafted with attention to detail, ensuring your project gets the polish it deserves.
+                    </p>
+                </div>
+                
+                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-blue-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Gaming Culture Understanding</h3>
+                    </div>
+                    <p class="text-slate-300">
+                        As gamers ourselves, we understand what resonates with gaming audiences and communities.
+                    </p>
+                </div>
+                
+                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Collaborative Partnership</h3>
+                    </div>
+                    <p class="text-slate-300">
+                        We work closely with you throughout the process, ensuring your vision comes to life exactly as imagined.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Our <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Services</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-emerald">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-emerald-400">Game Trailers</h3>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded-full">Introductory pricing available</span>
+                    </div>
+                    <p class="text-slate-300 mb-4">
+                        Cinematic trailers that capture the essence of your game and build excitement among your target audience. We specialize in creating compelling narratives that showcase gameplay and atmosphere.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">Blender</span>
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">After Effects</span>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-blue">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-blue-400">Explainer Videos</h3>
+                        <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full">Blender + After Effects</span>
+                    </div>
+                    <p class="text-slate-300 mb-4">
+                        Clear, engaging explainer videos that break down complex game mechanics or features. Perfect for tutorials, feature showcases, and onboarding content.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">2D Animation</span>
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">3D Elements</span>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-purple">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-purple-400">Brand Animations</h3>
+                        <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full">3D & 2D capabilities</span>
+                    </div>
+                    <p class="text-slate-300 mb-4">
+                        Dynamic logo animations, brand intros, and promotional content that help establish your game's visual identity and create memorable brand moments.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">Logo Reveals</span>
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">Brand Identity</span>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-pink">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-pink-400">Social Media Content</h3>
+                        <span class="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded-full">Multi-platform ready</span>
+                    </div>
+                    <p class="text-slate-300 mb-4">
+                        Platform-optimized animations designed for social media promotion. From Instagram stories to YouTube thumbnails, we create content that stops the scroll.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">Instagram</span>
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">YouTube</span>
+                        <span class="text-xs bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">Twitter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Data -->
+    <script>
+        const portfolioItems = [
+            {
+                title: "Elmwood Trail Game Trailer",
+                caption: "Mystery puzzle game",
+                image: "Aspect-ratio-16x9.svg.png",
+                youtubeUrl: "https://youtube.com",
+                instagramUrl: null,
+                comingSoon: false
+            },
+            {
+                title: "Spotify Brand Advertisement",
+                caption: "Music streaming brand animation",
+                image: "Aspect-ratio-16x9.svg.png",
+                youtubeUrl: "https://youtube.com",
+                instagramUrl: "https://instagram.com",
+                comingSoon: false
+            },
+            {
+                title: "Cosmic Byte Ares Product Demo",
+                caption: "Gaming joystick demo",
+                image: null,
+                youtubeUrl: null,
+                instagramUrl: null,
+                comingSoon: true
+            },
+            {
+                title: "SaaS Explainer Video",
+                caption: "B2B platform explainer",
+                image: null,
+                youtubeUrl: null,
+                instagramUrl: null,
+                comingSoon: true
+            }
+        ];
+    </script>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 bg-slate-800/20">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Our <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Portfolio</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6" id="portfolio-container">
+                <!-- Portfolio items will be dynamically inserted here -->
+            </div>
+
+            <script>
+                const portfolioContainer = document.getElementById('portfolio-container');
+                
+                portfolioItems.forEach(item => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.className = `bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700 ${item.comingSoon ? 'opacity-70' : 'card-hover glow-border cursor-pointer portfolio-item'}`;
+                    
+                    if (item.comingSoon) {
+                        portfolioItem.innerHTML = `
+                            <div class="relative">
+                                <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center">
+                                    <div class="text-center p-6">
+                                        <div class="text-5xl mb-2">${item.title.includes('Game') ? '🎮' : '💼'}</div>
+                                        <h3 class="text-xl font-bold">${item.title}</h3>
+                                        <p class="text-slate-400">${item.caption}</p>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/50">
+                                    <span class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm font-medium">
+                                        Coming Soon
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-purple-400">Coming Soon</span>
+                                    <span class="text-sm bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">
+                                        ${item.youtubeUrl && item.instagramUrl ? 'Multiple' : item.youtubeUrl ? 'YouTube' : 'Social'}
+                                    </span>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        portfolioItem.innerHTML = `
+                            <div class="relative">
+                                <div class="portfolio-overlay">
+                                    ${item.instagramUrl ? `
+                                        <a href="${item.instagramUrl}" target="_blank" class="platform-button instagram-button">
+                                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                                            <span>View on Instagram</span>
+                                        </a>
+                                    ` : ''}
+                                    ${item.youtubeUrl ? `
+                                        <a href="${item.youtubeUrl}" target="_blank" class="platform-button youtube-button">
+                                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                                            <span>View on YouTube</span>
+                                        </a>
+                                    ` : ''}
+                                </div>
+                                <div class="aspect-video bg-slate-800 overflow-hidden">
+                                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <button class="rounded-full p-4 shadow-lg" style="animation: pulse-slow 4s infinite, color-change 6s infinite ease-in-out; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); background: rgba(74, 222, 128, 0.8);">
+                                        <i data-lucide="play" class="w-8 h-8 text-white"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold">${item.title}</h3>
+                                <p class="text-slate-400">${item.caption}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    portfolioContainer.appendChild(portfolioItem);
+                });
+
+                // Re-initialize Lucide icons for dynamically added elements
+                lucide.createIcons();
+            </script>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Our <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Approach</span>
+            </h2>
+            
+            <div class="relative">
+                <!-- Desktop Timeline line -->
+                <div class="absolute left-1/2 h-full w-1 bg-gradient-to-b from-emerald-400 via-blue-400 to-purple-400 -translate-x-1/2 hidden md:block"></div>
+                
+                <!-- Step 1 -->
+                <div class="process-step relative">
+                    <div class="process-step-number bg-emerald-500">
+                        1
+                    </div>
+                    <div class="process-step-content">
+                        <h3 class="text-2xl font-bold text-emerald-400 mb-2">Discovery & Planning</h3>
+                        <p class="text-slate-300">
+                            We start by understanding your game, target audience, and goals. Together, we'll develop a creative direction that aligns with your vision and budget.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-step relative">
+                    <div class="process-step-number bg-blue-500">
+                        2
+                    </div>
+                    <div class="process-step-content">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-2">Create & Collaborate</h3>
+                        <p class="text-slate-300">
+                            Using Blender for 3D work and After Effects for motion graphics, we bring your project to life while keeping you involved throughout the creative process.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-step relative">
+                    <div class="process-step-number bg-purple-500">
+                        3
+                    </div>
+                    <div class="process-step-content">
+                        <h3 class="text-2xl font-bold text-purple-400 mb-2">Polish & Deliver</h3>
+                        <p class="text-slate-300">
+                            We refine every detail based on your feedback and deliver final files optimized for your intended platforms and use cases.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-slate-800/20">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+                Ready to Discuss Your <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Project Needs?</span>
+            </h2>
+            
+            <p class="text-lg text-slate-300 mb-10 text-center max-w-2xl mx-auto">
+                We're excited to learn about your game and explore how our motion graphics expertise can help bring your vision to life. Let's start a conversation about your project.
+            </p>
+            
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Get in Touch</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="mail" class="w-5 h-5 text-emerald-400 mt-1"></i>
+                                <div>
+                                    <p class="text-sm text-slate-400">Email</p>
+                                    <a href="mailto:team@fistbumpdevs.com" class="text-emerald-400 hover:underline">team@fistbumpdevs.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="at-sign" class="w-5 h-5 text-blue-400 mt-1"></i>
+                                <div>
+                                    <p class="text-sm text-slate-400">Social Media</p>
+                                    <a href="#" class="text-blue-400 hover:underline">@fistbumpdevs</a>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <h4 class="text-sm font-medium text-slate-400 mb-3">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center hover:bg-blue-500/20 hover:text-blue-400 transition btn-light-sweep">
+                                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center hover:bg-pink-500/20 hover:text-pink-400 transition btn-light-sweep">
+                                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center hover:bg-blue-600/20 hover:text-blue-400 transition btn-light-sweep">
+                                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Start Your Project</h3>
+                        
+                        <div class="flex flex-col space-y-4">
+                            <a href="#" class="px-6 py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-medium hover:shadow-lg hover:shadow-emerald-500/30 transition-all text-center btn-light-sweep">
+                                Send Us a Message
+                            </a>
+                            <a href="#" class="px-6 py-3 rounded-lg border-2 border-blue-400 text-blue-400 font-medium hover:bg-blue-400/10 transition text-center btn-light-sweep">
+                                Schedule a Call
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-slate-800">
+        <div class="container mx-auto text-center text-slate-500">
+            <p>© 2024 Fist Bump Developers. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Portfolio item click handlers
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            const overlay = item.querySelector('.portfolio-overlay');
+            
+            item.addEventListener('click', (e) => {
+                // Don't trigger if clicking on a link inside the card
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    return;
+                }
+                
+                // Toggle overlay visibility
+                const isVisible = overlay.style.display === 'flex';
+                document.querySelectorAll('.portfolio-overlay').forEach(ov => {
+                    ov.style.display = 'none';
+                });
+                overlay.style.display = isVisible ? 'none' : 'flex';
+            });
+        });
+
+        // Close overlay when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.portfolio-item')) {
+                document.querySelectorAll('.portfolio-overlay').forEach(ov => {
+                    ov.style.display = 'none';
+                });
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // Add this wherever you want to trigger the animation
+const buttons = document.querySelectorAll('.platform-button');
+buttons.forEach((button, index) => {
+    setTimeout(() => {
+        button.classList.add('animate', 'light-sweep');
+    }, index * 100); // Stagger if multiple buttons
+});
+    </script>
+</body>
+</html>
