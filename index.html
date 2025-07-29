@@ -8,46 +8,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        /* ===== ANIMATIONS ===== */
         @keyframes light-sweep {
             0% {
-                background-position: -100% -100%;
+                transform: translateX(-200%) rotate(25deg);
+                opacity: 0;
             }
-            20% {
-                background-position: 100% 100%;
+            50% {
+                opacity: 1;
             }
             100% {
-                background-position: 100% 100%;
+                transform: translateX(200%) rotate(25deg);
+                opacity: 0;
             }
         }
 
-                @keyframes expand-container {
-        0% {
-            transform: scaleX(0) scaleY(1);
-        }
-        25% {
-            transform: scaleX(1.3) scaleY(0.7);
-        }
-        40% {
-            transform: scaleX(0.85) scaleY(1.15);
-        }
-        50% {
-            transform: scaleX(1.08) scaleY(0.92);
-        }
-        60% {
-            transform: scaleX(0.98) scaleY(1.02);
-        }
-        67% {
-            transform: scaleX(1.02) scaleY(0.99);
-        }
-        71% {
-            transform: scaleX(0.995) scaleY(1.005);
-        }
-        100% {
-            transform: scaleX(1) scaleY(1);
-        }
+        @keyframes expand-container {
+            0% { transform: scaleX(0) scaleY(1); }
+            25% { transform: scaleX(1.3) scaleY(0.7); }
+            40% { transform: scaleX(0.85) scaleY(1.15); }
+            50% { transform: scaleX(1.08) scaleY(0.92); }
+            60% { transform: scaleX(0.98) scaleY(1.02); }
+            67% { transform: scaleX(1.02) scaleY(0.99); }
+            71% { transform: scaleX(0.995) scaleY(1.005); }
+            100% { transform: scaleX(1) scaleY(1); }
         }
 
-        /* Floating Elements Animation */
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 25px) rotate(90deg); }
+            50% { transform: translate(0, 50px) rotate(180deg); }
+            75% { transform: translate(-50px, 25px) rotate(270deg); }
+        }
+
+        @keyframes spin-zoom {
+            0% { transform: rotate(0deg) scale(0); opacity: 0; }
+            100% { transform: rotate(360deg) scale(1); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 0; }
+            25% { opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+            75% { opacity: 0.9; }
+        }
+
+        @keyframes color-change {
+            0%, 100% { background: rgba(74, 222, 128, 0.8); }
+            50% { background: rgba(59, 130, 246, 0.8); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== FLOATING ELEMENTS ===== */
         .floating-elements {
             position: absolute;
             inset: 0;
@@ -80,22 +102,7 @@
             animation-delay: -10s;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(50px, 25px) rotate(90deg);
-            }
-            50% {
-                transform: translate(0, 50px) rotate(180deg);
-            }
-            75% {
-                transform: translate(-50px, 25px) rotate(270deg);
-            }
-        }
-
-        /* Hero Section Styles */
+        /* ===== HERO SECTION ===== */
         .hero-content {
             position: relative;
             z-index: 1;
@@ -144,11 +151,12 @@
             color: #10b981;
             margin-bottom: 0.25rem;
         }
-        
+
+        /* ===== PORTFOLIO SECTION ===== */
         .portfolio-overlay {
             position: absolute;
             inset: 0;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.8);
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -183,109 +191,52 @@
             pointer-events: none;
             z-index: 1;
         }
-        @keyframes spin-zoom {
-            0% {
-                transform: rotate(0deg) scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: rotate(360deg) scale(1);
-                opacity: 1;
-            }
+
+        /* ===== PLATFORM BUTTONS ===== */
+        .platform-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            overflow: hidden;
+            transform-origin: center;
+            position: relative;
         }
 
-        @keyframes typewriter {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
+        .platform-button.animate {
+            animation: expand-container 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        @keyframes light-sweep {
-    0% {
-        transform: translateX(-200%) rotate(25deg);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(200%) rotate(25deg);
-        opacity: 0;
-    }
-}
+        .platform-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2) 25%,
+                rgba(255, 255, 255, 0.6) 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                transparent
+            );
+            width: 50%;
+            height: 100%;
+            transform: translateX(-200%) rotate(25deg);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+            border: none;
+        }
 
-    @keyframes expand-container {
-        0% {
-            transform: scaleX(0) scaleY(1);
+        .platform-button.light-sweep::before {
+            animation: light-sweep 0.6s ease-out 0.4s;
         }
-        25% {
-            transform: scaleX(1.3) scaleY(0.7);
-        }
-        40% {
-            transform: scaleX(0.85) scaleY(1.15);
-        }
-        50% {
-            transform: scaleX(1.08) scaleY(0.92);
-        }
-        60% {
-            transform: scaleX(0.98) scaleY(1.02);
-        }
-        67% {
-            transform: scaleX(1.02) scaleY(0.99);
-        }
-        71% {
-            transform: scaleX(0.995) scaleY(1.005);
-        }
-        100% {
-            transform: scaleX(1) scaleY(1);
-        }
-    }
 
-    .platform-button.animate {
-    animation: expand-container 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.platform-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2) 25%,
-        rgba(255, 255, 255, 0.6) 50%,
-        rgba(255, 255, 255, 0.2) 75%,
-        transparent
-    );
-    width: 50%;
-    height: 100%;
-    transform: translateX(-200%) rotate(25deg);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 2;
-    border: none;
-}
-
-.platform-button.light-sweep::before {
-    animation: light-sweep 0.6s ease-out 0.4s;
-}
-.platform-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    font-weight: 500;
-    overflow: hidden;
-    transform-origin: center;
-    position: relative; /* ADD THIS */
-}
         .platform-button i {
             animation: spin-zoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -294,47 +245,47 @@
             display: inline-block;
             white-space: nowrap;
             overflow: hidden;
-            /* animation: typewriter 1s steps(20) 0.5s forwards; */
-            /* width: 0; */
             width: 100%;
+        }
 
-        }
         .youtube-button {
-            background: linear-gradient(to bottom, #FF0000, #CC0000, #990000);
-            color: white;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.1);
+            background: rgba(255, 87, 87, 0.5);
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(255, 87, 87, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
         }
+
         .youtube-button:hover {
-            background: linear-gradient(to bottom, #DD0000, #990000, #660000);
-            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
+            background: rgba(255, 87, 87, 0.7);
+            border-color: rgba(255, 255, 255, 1);
+            color: rgba(255, 255, 255, 1);
+            box-shadow: 0 6px 12px rgba(255, 87, 87, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
+
         .instagram-button {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-            color: white;
+            background: rgba(255, 77, 166, 0.5);
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(255, 77, 166, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
         }
+
         .instagram-button:hover {
-            opacity: 0.9;
+            background: rgba(255, 77, 166, 0.7);
+            border-color: rgba(255, 255, 255, 1);
+            color: rgba(255, 255, 255, 1);
+            box-shadow: 0 6px 12px rgba(255, 77, 166, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); opacity: 0; }
-            25% { opacity: 0.9; }
-            50% { transform: scale(1.05); opacity: 1; }
-            75% { opacity: 0.9; }
-        }
-        @keyframes color-change {
-            0%, 100% { background: rgba(74, 222, 128, 0.8); }
-            50% { background: rgba(59, 130, 246, 0.8); }
-        }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-    .gradient-bg {
+
+        /* ===== GRADIENT BACKGROUND ===== */
+        .gradient-bg {
             background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #0f172a);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
@@ -354,12 +305,16 @@
                         radial-gradient(circle at 20% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
             pointer-events: none;
         }
+
+        /* ===== UTILITY CLASSES ===== */
         .logo-pulse {
             animation: pulse 3s ease-in-out infinite;
         }
+
         .card-hover {
             transition: all 0.3s ease;
         }
+
         .card-hover:hover {
             transform: translateY(-5px);
         }
@@ -368,18 +323,24 @@
         .card-hover.glow-emerald:hover {
             box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3);
         }
+
         .card-hover.glow-blue:hover {
             box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
         }
+
         .card-hover.glow-purple:hover {
             box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.3);
         }
+
         .card-hover.glow-pink:hover {
             box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.3);
         }
+
+        /* ===== GLOW BORDERS ===== */
         .glow-border {
             position: relative;
         }
+
         .glow-border::before {
             content: '';
             position: absolute;
@@ -395,29 +356,33 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+
         .glow-border:hover::before {
             opacity: 1;
         }
         
-        /* Service card specific glow colors */
         .glow-border.glow-emerald::before {
             background: linear-gradient(45deg, #10b981, #34d399);
         }
+
         .glow-border.glow-blue::before {
             background: linear-gradient(45deg, #3b82f6, #60a5fa);
         }
+
         .glow-border.glow-purple::before {
             background: linear-gradient(45deg, #a855f7, #c084fc);
         }
+
         .glow-border.glow-pink::before {
             background: linear-gradient(45deg, #ec4899, #f472b6);
         }
 
-        /* Button light sweep effect */
+        /* ===== BUTTON LIGHT SWEEP ===== */
         .btn-light-sweep {
             position: relative;
             overflow: hidden;
         }
+
         .btn-light-sweep::before {
             content: '';
             position: absolute;
@@ -441,12 +406,13 @@
             z-index: 1;
             transition: all 0.6s ease;
         }
+
         .btn-light-sweep:hover::before {
             transform: translateX(400%) skewX(25deg);
             opacity: 1;
         }
 
-        /* Process Section Mobile Styles */
+        /* ===== PROCESS SECTION ===== */
         .process-step {
             display: flex;
             flex-direction: column;
@@ -474,7 +440,7 @@
             width: 100%;
         }
 
-        /* Desktop Process Styles */
+        /* ===== RESPONSIVE PROCESS STYLES ===== */
         @media (min-width: 768px) {
             .process-step {
                 flex-direction: row;
@@ -520,7 +486,6 @@
                 width: 50%;
             }
 
-            /* Add connector lines */
             .process-step::after {
                 content: '';
                 position: absolute;
@@ -807,44 +772,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Data -->
-    <script>
-        const portfolioItems = [
-            {
-                title: "Elmwood Trail Game Trailer",
-                caption: "Mystery puzzle game",
-                image: "Aspect-ratio-16x9.svg.png",
-                youtubeUrl: "https://youtube.com",
-                instagramUrl: null,
-                comingSoon: false
-            },
-            {
-                title: "Spotify Brand Advertisement",
-                caption: "Music streaming brand animation",
-                image: "Aspect-ratio-16x9.svg.png",
-                youtubeUrl: "https://youtube.com",
-                instagramUrl: "https://instagram.com",
-                comingSoon: false
-            },
-            {
-                title: "Cosmic Byte Ares Product Demo",
-                caption: "Gaming joystick demo",
-                image: null,
-                youtubeUrl: null,
-                instagramUrl: null,
-                comingSoon: true
-            },
-            {
-                title: "SaaS Explainer Video",
-                caption: "B2B platform explainer",
-                image: null,
-                youtubeUrl: null,
-                instagramUrl: null,
-                comingSoon: true
-            }
-        ];
-    </script>
-
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 px-4 bg-slate-800/20">
         <div class="container mx-auto">
@@ -855,78 +782,6 @@
             <div class="grid md:grid-cols-2 gap-6" id="portfolio-container">
                 <!-- Portfolio items will be dynamically inserted here -->
             </div>
-
-            <script>
-                const portfolioContainer = document.getElementById('portfolio-container');
-                
-                portfolioItems.forEach(item => {
-                    const portfolioItem = document.createElement('div');
-                    portfolioItem.className = `bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700 ${item.comingSoon ? 'opacity-70' : 'card-hover glow-border cursor-pointer portfolio-item'}`;
-                    
-                    if (item.comingSoon) {
-                        portfolioItem.innerHTML = `
-                            <div class="relative">
-                                <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center">
-                                    <div class="text-center p-6">
-                                        <div class="text-5xl mb-2">${item.title.includes('Game') ? '🎮' : '💼'}</div>
-                                        <h3 class="text-xl font-bold">${item.title}</h3>
-                                        <p class="text-slate-400">${item.caption}</p>
-                                    </div>
-                                </div>
-                                <div class="absolute inset-0 flex items-center justify-center bg-black/50">
-                                    <span class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm font-medium">
-                                        Coming Soon
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm text-purple-400">Coming Soon</span>
-                                    <span class="text-sm bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">
-                                        ${item.youtubeUrl && item.instagramUrl ? 'Multiple' : item.youtubeUrl ? 'YouTube' : 'Social'}
-                                    </span>
-                                </div>
-                            </div>
-                        `;
-                    } else {
-                        portfolioItem.innerHTML = `
-                            <div class="relative">
-                                <div class="portfolio-overlay">
-                                    ${item.instagramUrl ? `
-                                        <a href="${item.instagramUrl}" target="_blank" class="platform-button instagram-button">
-                                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                                            <span>View on Instagram</span>
-                                        </a>
-                                    ` : ''}
-                                    ${item.youtubeUrl ? `
-                                        <a href="${item.youtubeUrl}" target="_blank" class="platform-button youtube-button">
-                                            <i data-lucide="youtube" class="w-5 h-5"></i>
-                                            <span>View on YouTube</span>
-                                        </a>
-                                    ` : ''}
-                                </div>
-                                <div class="aspect-video bg-slate-800 overflow-hidden">
-                                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
-                                </div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <button class="rounded-full p-4 shadow-lg" style="animation: pulse-slow 4s infinite, color-change 6s infinite ease-in-out; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); background: rgba(74, 222, 128, 0.8);">
-                                        <i data-lucide="play" class="w-8 h-8 text-white"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-xl font-bold">${item.title}</h3>
-                                <p class="text-slate-400">${item.caption}</p>
-                            </div>
-                        `;
-                    }
-                    
-                    portfolioContainer.appendChild(portfolioItem);
-                });
-
-                // Re-initialize Lucide icons for dynamically added elements
-                lucide.createIcons();
-            </script>
         </div>
     </section>
 
@@ -1057,95 +912,229 @@
         </div>
     </footer>
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // ===== PORTFOLIO DATA =====
+        const portfolioItems = [
+            {
+                title: "Elmwood Trail Game Trailer",
+                caption: "Mystery puzzle game",
+                image: "Aspect-ratio-16x9.svg.png",
+                youtubeUrl: "https://youtube.com",
+                instagramUrl: null,
+                comingSoon: false
+            },
+            {
+                title: "Spotify Brand Advertisement",
+                caption: "Music streaming brand animation",
+                image: "Aspect-ratio-16x9.svg.png",
+                youtubeUrl: "https://youtube.com",
+                instagramUrl: "https://instagram.com",
+                comingSoon: false
+            },
+            {
+                title: "Cosmic Byte Ares Product Demo",
+                caption: "Gaming joystick demo",
+                image: null,
+                youtubeUrl: null,
+                instagramUrl: null,
+                comingSoon: true
+            },
+            {
+                title: "SaaS Explainer Video",
+                caption: "B2B platform explainer",
+                image: null,
+                youtubeUrl: null,
+                instagramUrl: null,
+                comingSoon: true
+            }
+        ];
 
-        // Portfolio item click handlers
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            const overlay = item.querySelector('.portfolio-overlay');
+        // ===== PORTFOLIO GENERATION =====
+        function generatePortfolio() {
+            const portfolioContainer = document.getElementById('portfolio-container');
             
-            item.addEventListener('click', (e) => {
-                // Don't trigger if clicking on a link inside the card
-                if (e.target.tagName === 'A' || e.target.closest('a')) {
-                    return;
+            portfolioItems.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = `bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700 ${item.comingSoon ? 'opacity-70' : 'card-hover glow-border cursor-pointer portfolio-item'}`;
+                
+                if (item.comingSoon) {
+                    portfolioItem.innerHTML = `
+                        <div class="relative">
+                            <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center">
+                                <div class="text-center p-6">
+                                    <div class="text-5xl mb-2">${item.title.includes('Game') ? '🎮' : '💼'}</div>
+                                    <h3 class="text-xl font-bold">${item.title}</h3>
+                                    <p class="text-slate-400">${item.caption}</p>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/50">
+                                <span class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm font-medium">
+                                    Coming Soon
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-purple-400">Coming Soon</span>
+                                <span class="text-sm bg-slate-700/50 text-slate-300 px-2 py-1 rounded-full">
+                                    ${item.youtubeUrl && item.instagramUrl ? 'Multiple' : item.youtubeUrl ? 'YouTube' : 'Social'}
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    portfolioItem.innerHTML = `
+                        <div class="relative">
+                            <div class="portfolio-overlay">
+                                ${item.instagramUrl ? `
+                                    <a href="${item.instagramUrl}" target="_blank" class="platform-button instagram-button">
+                                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                                        <span>Instagram</span>
+                                    </a>
+                                ` : ''}
+                                ${item.youtubeUrl ? `
+                                    <a href="${item.youtubeUrl}" target="_blank" class="platform-button youtube-button">
+                                        <i data-lucide="youtube" class="w-5 h-5"></i>
+                                        <span>YouTube</span>
+                                    </a>
+                                ` : ''}
+                            </div>
+                            <div class="aspect-video bg-slate-800 overflow-hidden">
+                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="rounded-full p-4 shadow-lg" style="animation: pulse-slow 4s infinite, color-change 6s infinite ease-in-out; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); background: rgba(74, 222, 128, 0.8);">
+                                    <i data-lucide="play" class="w-8 h-8 text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold">${item.title}</h3>
+                            <p class="text-slate-400">${item.caption}</p>
+                        </div>
+                    `;
                 }
                 
-                // Toggle overlay visibility
-                const isVisible = overlay.style.display === 'flex';
-                document.querySelectorAll('.portfolio-overlay').forEach(ov => {
-                    ov.style.display = 'none';
-                });
-                overlay.style.display = isVisible ? 'none' : 'flex';
+                portfolioContainer.appendChild(portfolioItem);
             });
-        });
+        }
 
-        // Close overlay when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.portfolio-item')) {
-                document.querySelectorAll('.portfolio-overlay').forEach(ov => {
-                    ov.style.display = 'none';
-                });
-            }
-        });
-        
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking on a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+        // ===== PORTFOLIO EVENT HANDLERS =====
+        function initPortfolioHandlers() {
+            // Portfolio item click handlers
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                const overlay = item.querySelector('.portfolio-overlay');
                 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                item.addEventListener('click', (e) => {
+                    // Don't trigger if clicking on a link inside the card
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        return;
+                    }
+                    
+                    // Toggle overlay visibility
+                    const isVisible = overlay.style.display === 'flex';
+                    document.querySelectorAll('.portfolio-overlay').forEach(ov => {
+                        ov.style.display = 'none';
+                    });
+                    overlay.style.display = isVisible ? 'none' : 'flex';
+                });
+            });
+
+            // Close overlay when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.portfolio-item')) {
+                    document.querySelectorAll('.portfolio-overlay').forEach(ov => {
+                        ov.style.display = 'none';
                     });
                 }
             });
-        });
+        }
 
-        // Initialize platform button animations
-        const buttons = document.querySelectorAll('.platform-button');
-        buttons.forEach((button, index) => {
-            setTimeout(() => {
-                button.classList.add('animate', 'light-sweep');
-            }, index * 100); // Stagger if multiple buttons
-        });
-
-        // Scroll animation observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
+        // ===== MOBILE MENU =====
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        }, observerOptions);
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
-        // Observe all scroll-animate elements
-        document.querySelectorAll('.scroll-animate').forEach(el => {
-            observer.observe(el);
+        // ===== SMOOTH SCROLLING =====
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ===== PLATFORM BUTTON ANIMATIONS =====
+        function initPlatformButtonAnimations() {
+            const buttons = document.querySelectorAll('.platform-button');
+            buttons.forEach((button, index) => {
+                setTimeout(() => {
+                    button.classList.add('animate', 'light-sweep');
+                }, index * 100);
+            });
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all scroll-animate elements
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+            // Generate portfolio
+            generatePortfolio();
+            
+            // Re-initialize Lucide icons for dynamically added elements
+            lucide.createIcons();
+            
+            // Initialize all functionality
+            initPortfolioHandlers();
+            initMobileMenu();
+            initSmoothScrolling();
+            initPlatformButtonAnimations();
+            initScrollAnimations();
         });
     </script>
 </body>
