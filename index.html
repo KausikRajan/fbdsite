@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fist Bump Developers | Motion Graphics Studio</title>
+    <title>Pixel Plus Studios | Motion Graphics Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -121,24 +121,40 @@
         }
 
         .badge {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
             padding: 0.5rem 1rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .badge i {
+            width: 1rem;
+            height: 1rem;
+            opacity: 0.9;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1.5rem;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
             border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 60px -25px rgba(15, 23, 42, 0.9);
         }
 
         .stat-item {
@@ -146,12 +162,75 @@
         }
 
         .stat-number {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 2rem;
+            font-weight: 700;
             color: #10b981;
             margin-bottom: 0.25rem;
         }
 
+        .stat-item:nth-child(2) .stat-number {
+            color: #3b82f6;
+        }
+
+        .stat-item:nth-child(3) .stat-number {
+            color: #8b5cf6;
+        }
+
+        .stat-item:nth-child(4) .stat-number {
+            color: #f472b6;
+        }
+
+        .stat-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            margin: 0 auto 0.75rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(148, 163, 184, 0.12);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            backdrop-filter: blur(16px);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+        }
+
+        .cta-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(4px);
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-animate.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .coming-soon-icon {
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(148, 163, 184, 0.12);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            margin: 0 auto 1rem;
+            backdrop-filter: blur(16px);
+        }
         /* ===== LATEST TAG STYLES ===== */
         .latest-tag {
             position: absolute;
@@ -567,8 +646,8 @@
     <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/50 border-b border-slate-800">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20copy%202-udJB3vM68KHvRDZZaiuXfGXD3rzXhY.png" alt="Fist Bump Developers Logo" class="w-12 h-12">
-                <span class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Fist Bump Developers</span>
+                <img src="logo/PPS_Logo-removebg.png" alt="Pixel Plus Studios Logo" class="w-12 h-12">
+                <span class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Pixel Plus Studios</span>
             </div>
             
             <nav class="hidden md:flex space-x-8">
@@ -619,58 +698,84 @@
             <div class="max-w-5xl mx-auto text-center">
                 <!-- Logo with enhanced styling -->
                 <div class="logo-container mb-8">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20copy%202-udJB3vM68KHvRDZZaiuXfGXD3rzXhY.png" alt="Fist Bump Developers Logo" class="w-24 h-24 mx-auto logo-pulse shadow-2xl shadow-emerald-500/30 rounded-full">
+                    <img src="logo/PPS_Logo-removebg.png" alt="Pixel Plus Studios Logo" class="w-24 h-24 mx-auto">
                 </div>
                 
                 <!-- Main headline with improved typography -->
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight text-glow">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight text-glow scroll-animate">
                     Transform Ideas Into<br>
                     <span class="text-white">Motion Magic</span>
                 </h1>
                 
                 <!-- Enhanced description -->
-                <p class="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+                <p class="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-8 leading-relaxed scroll-animate">
                     We're a creative duo specializing in <span class="text-emerald-400 font-semibold">game trailers</span> and <span class="text-blue-400 font-semibold">motion graphics</span>. Currently building our portfolio with select projects that showcase our passion for bringing digital worlds to life.
                 </p>
                 
                 <!-- Badges -->
-                <div class="hero-badges">
-                    <span class="badge">🎮 Game Trailers</span>
-                    <span class="badge">🎨 Motion Graphics</span>
-                    <span class="badge">🚀 3D Animation</span>
-                    <span class="badge">⚡ Quick Turnaround</span>
+                <div class="hero-badges scroll-animate">
+                    <span class="badge">
+                        <i data-lucide="gamepad-2" class="w-4 h-4 text-emerald-300"></i>
+                        <span>Game Trailers</span>
+                    </span>
+                    <span class="badge">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-blue-200"></i>
+                        <span>Motion Graphics</span>
+                    </span>
+                    <span class="badge">
+                        <i data-lucide="box" class="w-4 h-4 text-purple-200"></i>
+                        <span>3D Animation</span>
+                    </span>
+                    <span class="badge">
+                        <i data-lucide="timer" class="w-4 h-4 text-pink-200"></i>
+                        <span>Quick Turnaround</span>
+                    </span>
                 </div>
-                
+
                 <!-- Stats -->
-                <div class="stats-grid max-w-3xl mx-auto mb-10">
+                <div class="stats-grid max-w-3xl mx-auto mb-10 scroll-animate">
                     <div class="stat-item">
+                        <div class="stat-icon bg-emerald-500/10">
+                            <i data-lucide="folder-kanban" class="w-5 h-5 text-emerald-300"></i>
+                        </div>
                         <div class="stat-number">15+</div>
-                        <div class="text-sm text-slate-400">Projects Completed</div>
+                        <div class="text-sm text-slate-400">Launch-ready videos delivered</div>
                     </div>
                     <div class="stat-item">
+                        <div class="stat-icon bg-blue-500/10">
+                            <i data-lucide="smile" class="w-5 h-5 text-blue-300"></i>
+                        </div>
                         <div class="stat-number">100%</div>
-                        <div class="text-sm text-slate-400">Client Satisfaction</div>
+                        <div class="text-sm text-slate-400">Client satisfaction record</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">5★</div>
-                        <div class="text-sm text-slate-400">Average Rating</div>
+                        <div class="stat-icon bg-purple-500/10">
+                            <i data-lucide="star" class="w-5 h-5 text-purple-300"></i>
+                        </div>
+                        <div class="stat-number">4.9/5</div>
+                        <div class="text-sm text-slate-400">Average project rating</div>
                     </div>
                     <div class="stat-item">
+                        <div class="stat-icon bg-pink-500/10">
+                            <i data-lucide="rocket" class="w-5 h-5 text-pink-300"></i>
+                        </div>
                         <div class="stat-number">48h</div>
-                        <div class="text-sm text-slate-400">Average Delivery</div>
+                        <div class="text-sm text-slate-400">Average kickoff window</div>
                     </div>
                 </div>
-                
+
                 <!-- CTA Buttons with improved styling -->
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#contact" class="px-10 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/40 transition-all transform hover:scale-105 btn-light-sweep">
-                        🚀 Start Your Project
+                <div class="flex flex-col sm:flex-row justify-center gap-4 scroll-animate">
+                    <a href="#contact" class="cta-button px-10 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/40 transition-all transform hover:scale-105 btn-light-sweep">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>Start Your Project</span>
                     </a>
-                    <a href="#portfolio" class="px-10 py-4 rounded-full border-2 border-emerald-400 text-emerald-400 font-semibold text-lg hover:bg-emerald-400/20 transition-all transform hover:scale-105 btn-light-sweep backdrop-blur-sm">
-                        👀 View Our Work
+                    <a href="#portfolio" class="cta-button px-10 py-4 rounded-full border-2 border-emerald-400 text-emerald-400 font-semibold text-lg hover:bg-emerald-400/20 transition-all transform hover:scale-105 btn-light-sweep backdrop-blur-sm">
+                        <i data-lucide="play-circle" class="w-5 h-5"></i>
+                        <span>View Our Work</span>
                     </a>
                 </div>
-                
+
                 <!-- Trust indicators -->
                 <div class="mt-12 flex justify-center items-center gap-6 text-slate-500 text-sm">
                     <span class="flex items-center gap-2">
@@ -693,22 +798,22 @@
     <!-- About Section -->
     <section class="py-20 px-4 bg-slate-800/20">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center scroll-animate">
                 Emerging Specialist Duo with <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Quality-First Approach</span>
             </h2>
             
-            <p class="text-lg text-slate-300 mb-10 text-center">
+            <p class="text-lg text-slate-300 mb-10 text-center scroll-animate">
                 We're a passionate creative team of two motion graphics artists, just starting our professional journey together. Our experience ranges from brand animations to game promotional content, and we're committed to delivering exceptional quality that helps indie developers stand out.
             </p>
             
-            <div class="bg-slate-800/50 rounded-xl p-6 mb-10 text-center border border-slate-700">
+            <div class="bg-slate-800/50 rounded-xl p-6 mb-10 text-center border border-slate-700 scroll-animate">
                 <p class="text-emerald-400 font-medium">
                     Currently offering competitive rates for indie developers
                 </p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700 scroll-animate">
                     <div class="flex items-center mb-4">
                         <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center mr-3 flex-shrink-0">
                             <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
@@ -720,7 +825,7 @@
                     </p>
                 </div>
                 
-                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700 scroll-animate">
                     <div class="flex items-center mb-4">
                         <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center mr-3 flex-shrink-0">
                             <i data-lucide="check" class="w-4 h-4 text-blue-400"></i>
@@ -732,7 +837,7 @@
                     </p>
                 </div>
                 
-                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700 scroll-animate">
                     <div class="flex items-center mb-4">
                         <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3 flex-shrink-0">
                             <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
@@ -750,13 +855,13 @@
     <!-- Services Section -->
     <section id="services" class="py-20 px-4">
         <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center scroll-animate">
                 Our <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Services</span>
             </h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Service 1 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-emerald">
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 scroll-animate card-hover glow-border glow-emerald">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-xl font-bold text-emerald-400">Game Trailers</h3>
                         <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded-full">Introductory pricing available</span>
@@ -771,7 +876,7 @@
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-blue">
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 scroll-animate card-hover glow-border glow-blue">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-xl font-bold text-blue-400">Explainer Videos</h3>
                         <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full">Blender + After Effects</span>
@@ -786,7 +891,7 @@
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-purple">
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 scroll-animate card-hover glow-border glow-purple">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-xl font-bold text-purple-400">Brand Animations</h3>
                         <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full">3D & 2D capabilities</span>
@@ -801,7 +906,7 @@
                 </div>
                 
                 <!-- Service 4 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 card-hover glow-border glow-pink">
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 scroll-animate card-hover glow-border glow-pink">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-xl font-bold text-pink-400">Social Media Content</h3>
                         <span class="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded-full">Multi-platform ready</span>
@@ -822,7 +927,7 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 px-4 bg-slate-800/20">
         <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center scroll-animate">
                 Our <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Portfolio</span>
             </h2>
             
@@ -835,7 +940,7 @@
     <!-- Process Section -->
     <section id="process" class="py-20 px-4">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center scroll-animate">
                 Our <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Approach</span>
             </h2>
             
@@ -844,7 +949,7 @@
                 <div class="absolute left-1/2 h-full w-1 bg-gradient-to-b from-emerald-400 via-blue-400 to-purple-400 -translate-x-1/2 hidden md:block"></div>
                 
                 <!-- Step 1 -->
-                <div class="process-step relative">
+                <div class="process-step scroll-animate relative">
                     <div class="process-step-number bg-emerald-500">
                         1
                     </div>
@@ -857,7 +962,7 @@
                 </div>
                 
                 <!-- Step 2 -->
-                <div class="process-step relative">
+                <div class="process-step scroll-animate relative">
                     <div class="process-step-number bg-blue-500">
                         2
                     </div>
@@ -870,7 +975,7 @@
                 </div>
                 
                 <!-- Step 3 -->
-                <div class="process-step relative">
+                <div class="process-step scroll-animate relative">
                     <div class="process-step-number bg-purple-500">
                         3
                     </div>
@@ -888,15 +993,15 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 bg-slate-800/20">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center scroll-animate">
                 Ready to Discuss Your <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Project Needs?</span>
             </h2>
             
-            <p class="text-lg text-slate-300 mb-10 text-center max-w-2xl mx-auto">
+            <p class="text-lg text-slate-300 mb-10 text-center max-w-2xl mx-auto scroll-animate">
                 We're excited to learn about your game and explore how our motion graphics expertise can help bring your vision to life. Let's start a conversation about your project.
             </p>
             
-            <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700">
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-slate-700 scroll-animate">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <h3 class="text-xl font-bold mb-4">Get in Touch</h3>
@@ -955,7 +1060,7 @@
     <!-- Footer -->
     <footer class="py-8 px-4 border-t border-slate-800">
         <div class="container mx-auto text-center text-slate-500">
-            <p>© 2024 Fist Bump Developers. All rights reserved.</p>
+            <p>Copyright 2024 Pixel Plus Studios. All rights reserved.</p>
         </div>
     </footer>
 
@@ -981,7 +1086,7 @@
                 comingSoon: false
             },
             {
-                title: "Minecraft Animation: Rise of the Rod-Slinger 🎣",
+                title: "Minecraft Animation: Rise of the Rod-Slinger",
                 caption: "Fan-made Minecraft animation",
                 image: "Thumbnails/minecraft rodslinger.jpg",
                 youtubeUrl: "https://youtu.be/OV8mDFfbLhs",
@@ -1013,14 +1118,16 @@
             
             portfolioItems.forEach(item => {
                 const portfolioItem = document.createElement('div');
-                portfolioItem.className = `bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700 ${item.comingSoon ? 'opacity-70' : 'card-hover glow-border cursor-pointer portfolio-item'}`;
-                
+                portfolioItem.className = `scroll-animate bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700 ${item.comingSoon ? 'opacity-70' : 'card-hover glow-border cursor-pointer portfolio-item'}`;
                 if (item.comingSoon) {
+                    const iconName = item.title.toLowerCase().includes('game') ? 'gamepad-2' : 'sparkles';
                     portfolioItem.innerHTML = `
                         <div class="relative">
-                            <div class="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center">
+                            <div class="aspect-video bg-gradient-to-br from-purple-900/40 to-pink-900/40 flex items-center justify-center">
                                 <div class="text-center p-6">
-                                    <div class="text-5xl mb-2">${item.title.includes('Game') ? '🎮' : '💼'}</div>
+                                    <div class="coming-soon-icon">
+                                        <i data-lucide="${iconName}" class="w-6 h-6 text-purple-200"></i>
+                                    </div>
                                     <h3 class="text-xl font-bold">${item.title}</h3>
                                     <p class="text-slate-400">${item.caption}</p>
                                 </div>
@@ -1197,3 +1304,13 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
