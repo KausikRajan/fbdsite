@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Script font for the hero pill -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <style>
     /* ===== THEME: Monochrome + Violet Accents ===== */
     :root {
@@ -329,6 +329,10 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
           <img src="logo/PPS_Logo-removebg.png" alt="Pixel Plus Studios Logo" class="w-20 h-20 mx-auto opacity-90" />
         </div>
         <h1 class="hero-title text-3xl md:text-5xl font-bold mb-6 leading-tight"><span class="hero-title-main gradient-text-light">Transform Ideas Into</span><span class="hero-title-pill">Motion Magic</span></h1>
+        <!-- Alternate inline gradient version preserved for reuse:
+        <h1 class="hero-title text-3xl md:text-5xl font-bold mb-6 leading-tight"><span class="hero-title-main gradient-text-light">Transform Ideas Into</span> <span class="gradient-text-violet">Motion Magic</span></h1>
+        -->
+
         <p class="text-xl md:text-2xl text-muted max-w-4xl mx-auto mb-10 leading-relaxed">
           A creative duo focused on <span class="text-highlight font-semibold">game trailers</span> &
           <span class="text-highlight font-semibold">motion graphics</span>. We keep it premium, polished, and purposeful.
@@ -392,8 +396,8 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
       <div class="grid md:grid-cols-3 gap-6">
         <div class="glass p-6 rounded-xl card-hover">
           <div class="flex items-center mb-4">
-            <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center mr-3">
-              <i data-lucide="check" class="w-4 h-4 text-[var(--violet)]"></i>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center mr-3 border-2 border-[rgba(94,234,212,0.6)]">
+              <i data-lucide="check" class="w-4 h-4 text-[#5eead4]" style="filter: drop-shadow(0 0 2px rgba(94,234,212,0.6));"></i>
             </div>
             <h3 class="font-bold text-lg">Quality-First Mindset</h3>
           </div>
@@ -401,8 +405,8 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         </div>
         <div class="glass p-6 rounded-xl card-hover">
           <div class="flex items-center mb-4">
-            <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center mr-3">
-              <i data-lucide="check" class="w-4 h-4 text-[var(--violet)]"></i>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center mr-3 border-2 border-[rgba(250,204,21,0.65)]">
+              <i data-lucide="check" class="w-4 h-4 text-[#facc15]" style="filter: drop-shadow(0 0 2px rgba(250,204,21,0.55));"></i>
             </div>
             <h3 class="font-bold text-lg">Gaming Culture Native</h3>
           </div>
@@ -410,8 +414,8 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         </div>
         <div class="glass p-6 rounded-xl card-hover">
           <div class="flex items-center mb-4">
-            <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center mr-3">
-              <i data-lucide="check" class="w-4 h-4 text-[var(--violet)]"></i>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center mr-3 border-2 border-[rgba(251,113,133,0.6)]">
+              <i data-lucide="check" class="w-4 h-4 text-[#fb7185]" style="filter: drop-shadow(0 0 2px rgba(251,113,133,0.6));"></i>
             </div>
             <h3 class="font-bold text-lg">Collaborative Partner</h3>
           </div>
@@ -428,7 +432,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="glass p-6 rounded-xl card-hover">
           <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold text-highlight">Game Trailers</h3>
+            <h3 class="relative z-10 text-xl font-bold text-white">Game Trailers</h3>
             <span class="text-xs px-2 py-1 rounded-full border border-white/10 text-muted">Intro pricing</span>
           </div>
           <p class="text-muted mb-4">Cinematic trailers that capture atmosphere, mechanics, and momentum.</p>
@@ -439,7 +443,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         </div>
         <div class="glass p-6 rounded-xl card-hover">
           <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold text-highlight">Explainer Videos</h3>
+            <h3 class="relative z-10 text-xl font-bold text-white">Explainer Videos</h3>
             <span class="text-xs px-2 py-1 rounded-full border border-white/10 text-muted">2D + 3D</span>
           </div>
           <p class="text-muted mb-4">Clear, engaging explainers for mechanics, onboarding, and features.</p>
@@ -450,7 +454,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         </div>
         <div class="glass p-6 rounded-xl card-hover">
           <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold text-highlight">Brand Animations</h3>
+            <h3 class="relative z-10 text-xl font-bold text-white">Brand Animations</h3>
             <span class="text-xs px-2 py-1 rounded-full border border-white/10 text-muted">Logo / Identity</span>
           </div>
           <p class="text-muted mb-4">Logo reveals, product moments, and polished promos that travel well.</p>
@@ -461,7 +465,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         </div>
         <div class="glass p-6 rounded-xl card-hover">
           <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold text-highlight">Social Content</h3>
+            <h3 class="relative z-10 text-xl font-bold text-white">Social Content</h3>
             <span class="text-xs px-2 py-1 rounded-full border border-white/10 text-muted">Multi-platform</span>
           </div>
           <p class="text-muted mb-4">Platform-native cuts and loops that stop the scroll and convert.</p>
@@ -512,7 +516,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         <div class="proc-item">
           <div class="proc-num">1</div>
           <div>
-            <div class="proc-title">Discovery<span class="accent"> & </span>Planning</div>
+            <div class="proc-title">Discovery<span class="accent"> &</span>Planning</div>
             <p class="proc-desc">Goals, audience, scope, and creative direction set early to move fast with clarity.</p>
           </div>
         </div>
@@ -571,9 +575,9 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
           </div>
           <div>
             <h3 class="text-xl font-bold mb-4">Start Your Project</h3>
-            <div class="flex flex-col space-y-4">
-              <a href="#" class="btn-light-sweep px-6 py-3 rounded-lg text-white font-medium glass">Send Us a Message</a>
-              <a href="#" class="px-6 py-3 rounded-lg border border-white/20 hover:border-[var(--violet)] hover:text-[var(--violet)] transition text-center">Schedule a Call</a>
+            <div class="flex flex-col space-y-4 items-stretch">
+              <a href="#" class="btn-light-sweep block w-full px-6 py-3 rounded-lg text-white font-medium glass text-center">Send Us a Message</a>
+              <a href="#" class="block w-full px-6 py-3 rounded-lg border border-white/20 hover:border-[var(--violet)] hover:text-[var(--violet)] transition text-center">Schedule a Call</a>
             </div>
           </div>
         </div>
@@ -635,6 +639,12 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         comingSoon: true
       }
     ];
+
+    function initIcons() {
+      if (!window.lucide || typeof window.lucide.createIcons !== 'function') return;
+      const iconSet = window.lucide.icons || window.lucide.defaultIcons || window.lucide.allIcons;
+      window.lucide.createIcons(iconSet ? { icons: iconSet } : undefined);
+    }
 
     // ===== PORTFOLIO GENERATION =====
     function generatePortfolio() {
@@ -698,6 +708,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         }
         portfolioContainer.appendChild(portfolioItem);
       });
+      initIcons();
     }
 
     // ===== PORTFOLIO EVENT HANDLERS =====
@@ -727,12 +738,14 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      lucide.createIcons();
+      initIcons();
       generatePortfolio();
-      lucide.createIcons();
+      initIcons();
       initPortfolioHandlers();
       initMobileMenu();
     });
   </script>
 </body>
 </html>
+
+
