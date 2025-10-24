@@ -108,27 +108,77 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
       -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.6;
     }
 
+    #video-modal {
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    #video-modal.modal-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #video-modal .modal-panel {
+      transform: translateY(20px) scale(0.96);
+      opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    #video-modal.modal-open .modal-panel {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
     /* ===== Tags / Badges ===== */
-    .latest-tag {
+    .portfolio-tags {
       position: absolute; top: 0.75rem; right: 0.75rem;
+      display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: flex-end;
+      z-index: 5; pointer-events: none;
+    }
+
+    .portfolio-tag {
       background: linear-gradient(135deg, rgba(139,92,246,0.9), rgba(139,92,246,0.55));
-      color: white; padding: 0.35rem 0.65rem; border-radius: 0.5rem; font-size: 0.70rem; font-weight: 700;
-      letter-spacing: .04em; box-shadow: 0 6px 16px rgba(139,92,246,0.35);
+      color: white; padding: 0.35rem 0.65rem; border-radius: 0.5rem;
+      font-size: 0.70rem; font-weight: 700; letter-spacing: .04em;
+      box-shadow: 0 6px 16px rgba(139,92,246,0.35);
     }
 
-    /* ===== Portfolio overlay ===== */
-    .portfolio-overlay {
-      position: absolute; inset: 0; background-color: rgba(0,0,0,0.75);
-      display: none; flex-direction: column; justify-content: center; align-items: center; gap: 0.75rem; z-index: 2;
+    /* ===== Section gradient overlays ===== */
+    .section-gradient {
+      position: relative;
+      z-index: 0;
     }
 
-    .platform-button {
-      display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.2rem; border-radius: 0.6rem;
-      font-weight: 600; position: relative; border: 1px solid var(--border-strong);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      color: var(--text);
+    .section-gradient::before {
+      content: '';
+      position: absolute;
+      inset: -10%;
+      pointer-events: none;
+      background:
+        radial-gradient(45% 60% at 12% 10%, rgba(139,92,246,0.18), transparent 70%),
+        radial-gradient(40% 55% at 85% 0%, rgba(56,189,248,0.15), transparent 72%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(7,5,16,0.4));
+      opacity: 0.55;
+      filter: blur(0px);
+      z-index: 0;
     }
-    .platform-button:hover { border-color: rgba(139,92,246,0.5); box-shadow: 0 8px 24px -10px rgba(139,92,246,0.5); }
+
+    .section-gradient::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(120deg, rgba(139,92,246,0.12), transparent 45%, rgba(14,165,233,0.1) 75%, transparent 95%);
+      opacity: 0.35;
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+
+    .section-gradient > * {
+      position: relative;
+      z-index: 1;
+    }
 
     /* ===== Process timeline (violet) ===== */
     .timeline-line { background: linear-gradient(to bottom, rgba(139,92,246,0.5), rgba(139,92,246,0.15)); }
@@ -382,10 +432,10 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
   <section class="py-20 px-4 bg-black/40">
     <div class="container mx-auto max-w-4xl">
       <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-        Emerging Specialist Duo with <span class="text-highlight">Quality-First</span> Approach
+        Emerging with <span class="text-highlight">Quality-First</span> Approach
       </h2>
       <p class="text-lg text-muted mb-10 text-center">
-        We craft brand-elevating motion for games and tech. From polished promos to launch-ready trailers, everything is designed to look and feel premium.
+        We craft brand-elevating motion for short-form videos, podcast videos, games and tech including promos all designed to look and feel premium.
       </p>
       <div class="glass rounded-xl p-6 mb-10 text-center">
         <p class="text-[var(--violet)] font-medium">Currently offering founder-friendly rates for indie developers</p>
@@ -513,7 +563,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         <div class="proc-item">
           <div class="proc-num">1</div>
           <div>
-            <div class="proc-title">Discovery<span class="accent"> &</span>Planning</div>
+            <div class="proc-title">Discovery<span class="accent"> & </span>Planning</div>
             <p class="proc-desc">Goals, audience, scope, and creative direction set early to move fast with clarity.</p>
           </div>
         </div>
@@ -521,7 +571,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
           <div class="proc-num">2</div>
           <div>
             <div class="proc-title">Create<span class="accent"> & </span>Collaborate</div>
-            <p class="proc-desc">Production in Blender/AE with transparent check-ins and tight iteration cycles.</p>
+            <p class="proc-desc">Production with transparent check-ins and tight iteration cycles.</p>
           </div>
         </div>
         <div class="proc-item">
@@ -540,7 +590,7 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
   <section id="contact" class="py-20 px-4 bg-black/40">
     <div class="container mx-auto max-w-4xl">
       <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Ready to Discuss Your <span class="text-highlight">Project</span>?</h2>
-      <p class="text-lg text-muted mb-10 text-center max-w-2xl mx-auto">Tell us about your game and goals. We'll propose a crisp, no-fluff plan.</p>
+      <p class="text-lg text-muted mb-10 text-center max-w-2xl mx-auto">Tell us about your ideas. We'll propose a crisp, no-fluff plan.</p>
       <div class="glass rounded-xl p-8">
         <div class="grid md:grid-cols-2 gap-8">
           <div>
@@ -589,18 +639,51 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
     </div>
   </footer>
 
+  <!-- Video Modal -->
+  <div id="video-modal" class="fixed inset-0 hidden z-50 items-center justify-center px-4">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-md" data-modal-close></div>
+    <div class="relative z-10 w-full max-w-4xl">
+      <div class="glass relative rounded-xl overflow-hidden modal-panel">
+        <button type="button" id="video-modal-close" class="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 border border-white/15 hover:bg-black/80 transition shadow-lg z-20" aria-label="Close video">
+          <i data-lucide="x" class="w-5 h-5 text-white"></i>
+        </button>
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between px-6 pr-16 sm:pr-24 py-5 border-b border-white/10 bg-black/40">
+          <h3 id="video-modal-title" class="text-lg font-semibold text-white">Video Title</h3>
+          <div id="video-modal-link-wrapper" class="flex items-center gap-3 text-sm text-white/70 hidden">
+            <span class="uppercase tracking-wide text-xs text-white/60">View on:</span>
+            <div id="video-modal-links" class="flex items-center gap-2"></div>
+          </div>
+        </div>
+        <div class="aspect-video">
+          <iframe id="video-modal-iframe" src="" class="w-full h-full" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== JAVASCRIPT ===== -->
   <script>
     // ===== PORTFOLIO DATA =====
     const portfolioItems = [
       {
-        title: "Elmwood Trail Game Trailer",
-        caption: "Mystery puzzle game",
-        image: "Aspect-ratio-16x9.svg.png",
-        youtubeUrl: "https://youtube.com",
+        title: "Center Of Influence - ft. Stephen Oommen",
+        caption: "Stephen Oommen expalains first COI",
+        image: "Thumbnails/COI-1.png",
+        youtubeUrl: null,
         instagramUrl: null,
         comingSoon: false,
-        tag: 'Exclusive'
+        modalVideoUrl: "https://drive.google.com/file/d/1wFw429jqtONeC66lv4J7dwV7t6LN-Q0b/preview?autoplay=1",
+        tags: ["Exclusive", "Podcast - Shorts"]
+      },
+      {
+        title: "Elmwood Trail Game Trailer",
+        caption: "Mystery puzzle game",
+        image: "Thumbnails/elmwood.png",
+        youtubeUrl: null,
+        instagramUrl: null,
+        comingSoon: false,
+        modalVideoUrl: "https://drive.google.com/file/d/1aKyjDM25AMg1IPg2mhrykm5oX1XiEZ_w/preview?autoplay=1",
+        tags: ["Exclusive"]
       },
       {
         title: "Spotify Brand Advertisement",
@@ -608,7 +691,8 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         image: "Thumbnails/spotify.webp",
         youtubeUrl: "https://youtu.be/jag5wCiPiSo",
         instagramUrl: "https://www.instagram.com/reel/DCbc8NogVrn/?igsh=ZzM5NGN5Y2Z3MzJz",
-        comingSoon: false
+        comingSoon: false,
+        tags: []
       },
       {
         title: "Minecraft Animation: Rise of the Rod-Slinger",
@@ -617,7 +701,28 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         youtubeUrl: "https://youtu.be/OV8mDFfbLhs",
         instagramUrl: "https://www.instagram.com/reel/DIHlHGYTdsb/?igsh=MWl5NmQ2eTMybWljNA==",
         comingSoon: false,
-        tag: '3D Animated'
+        tags: ["3D Animated"]
+      },
+      {
+        title: "MOO - Lenny's Podcast ft. Wes Kao",
+        caption: "A clip from Wes Kao's Speech on Become a better communicator",
+        image: "Thumbnails/MOO.png",
+        youtubeUrl: null,
+        instagramUrl: null,
+        comingSoon: false,
+        modalVideoUrl: "https://drive.google.com/file/d/16CS_vFu0LVZQ4EpvypZv1sd3BvJSpMyU/preview?autoplay=1",
+        tags: ["Podcast - Shorts"]
+      },
+      {
+        title: "Focus Stifles Creativity - Stephen Oommen",
+        caption: "Stephen Oommen expalains about FOCUS",
+        image: "Thumbnails/focus.png",
+        youtubeUrl: null,
+        instagramUrl: null,
+        linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7368625199279243264/?originTrackingId=h9xxrncMQriapWMQJArv8Q%3D%3D",
+        comingSoon: false,
+        modalVideoUrl: "https://drive.google.com/file/d/1Ml-a0HnpM9noBthieeKxEvUcQio5YvdH/preview?autoplay=1",
+        tags: ["Podcast - Shorts"]
       },
       {
         title: "Cosmic Byte Ares Product Demo",
@@ -625,7 +730,8 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         image: null,
         youtubeUrl: null,
         instagramUrl: null,
-        comingSoon: true
+        comingSoon: true,
+        tags: []
       },
       {
         title: "SaaS Explainer Video",
@@ -633,9 +739,161 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
         image: null,
         youtubeUrl: null,
         instagramUrl: null,
-        comingSoon: true
+        comingSoon: true,
+        tags: []
       }
     ];
+
+    const videoModalElement = document.getElementById('video-modal');
+    const videoModalIframe = document.getElementById('video-modal-iframe');
+    const videoModalCloseButton = document.getElementById('video-modal-close');
+    const videoModalTitle = document.getElementById('video-modal-title');
+    const videoModalLinkWrapper = document.getElementById('video-modal-link-wrapper');
+    const videoModalLinks = document.getElementById('video-modal-links');
+    let videoModalCloseTimeout = null;
+
+    function toGoogleDrivePreview(url) {
+      if (!url) return null;
+      const trimmed = url.trim();
+      const fileIdMatch = trimmed.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (fileIdMatch && fileIdMatch[1]) {
+        return `https://drive.google.com/file/d/${fileIdMatch[1]}/preview?autoplay=1`;
+      }
+      const openIdMatch = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (openIdMatch && openIdMatch[1]) {
+        return `https://drive.google.com/file/d/${openIdMatch[1]}/preview?autoplay=1`;
+      }
+      if (trimmed.includes('/preview')) {
+        return trimmed.includes('autoplay=1') ? trimmed : `${trimmed}${trimmed.includes('?') ? '&' : '?'}autoplay=1`;
+      }
+      return null;
+    }
+
+    function resolveModalData(item) {
+      if (!item) return null;
+      const modalData = {
+        title: item.title || 'Video',
+        youtubeUrl: item.youtubeUrl || null,
+        instagramUrl: item.instagramUrl || null,
+        linkedinUrl: item.linkedinUrl || null
+      };
+
+      if (item.modalVideoUrl) {
+        const driveEmbed = toGoogleDrivePreview(item.modalVideoUrl);
+        modalData.url = driveEmbed || item.modalVideoUrl;
+        return modalData;
+      }
+
+      if (item.videoUrl) {
+        const driveEmbed = toGoogleDrivePreview(item.videoUrl);
+        if (driveEmbed) {
+          modalData.url = driveEmbed;
+          return modalData;
+        }
+      }
+
+      if (item.youtubeUrl) {
+        const youtubeMatch = item.youtubeUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{6,})/);
+        if (youtubeMatch && youtubeMatch[1]) {
+          modalData.url = `https://www.youtube.com/embed/${youtubeMatch[1]}?autoplay=1`;
+          return modalData;
+        }
+      }
+
+      return null;
+    }
+
+    function openVideoModal(options = {}) {
+      if (!videoModalElement) return;
+      const { url, title, youtubeUrl, instagramUrl, linkedinUrl } = options;
+      if (!url) return;
+      if (videoModalCloseTimeout) {
+        clearTimeout(videoModalCloseTimeout);
+        videoModalCloseTimeout = null;
+      }
+      if (videoModalTitle) {
+        videoModalTitle.textContent = title || 'Video';
+      }
+      if (videoModalLinks) {
+        const platformLinks = [
+          { key: 'youtubeUrl', icon: 'youtube', label: 'YouTube', value: youtubeUrl },
+          { key: 'instagramUrl', icon: 'instagram', label: 'Instagram', value: instagramUrl },
+          { key: 'linkedinUrl', icon: 'linkedin', label: 'LinkedIn', value: linkedinUrl }
+        ];
+        const linksMarkup = platformLinks
+          .filter(link => !!link.value)
+          .map(link => `
+            <a href="${link.value}" target="_blank" rel="noopener noreferrer" class="rounded-full bg-white/10 hover:bg-white/20 transition px-3 py-2 flex items-center gap-2">
+              <i data-lucide="${link.icon}" class="w-4 h-4"></i>
+              <span class="hidden sm:inline">${link.label}</span>
+            </a>
+          `)
+          .join('');
+        videoModalLinks.innerHTML = linksMarkup;
+        if (videoModalLinkWrapper) {
+          if (linksMarkup) {
+            videoModalLinkWrapper.classList.remove('hidden');
+          } else {
+            videoModalLinkWrapper.classList.add('hidden');
+          }
+        }
+        initIcons();
+      }
+      if (videoModalIframe) {
+        videoModalIframe.src = url || '';
+      }
+      videoModalElement.classList.remove('hidden');
+      videoModalElement.classList.add('flex');
+      videoModalElement.classList.remove('modal-open');
+      requestAnimationFrame(() => {
+        videoModalElement.classList.add('modal-open');
+      });
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeVideoModal() {
+      if (!videoModalElement || videoModalElement.classList.contains('hidden')) return;
+      videoModalElement.classList.remove('modal-open');
+      if (videoModalIframe) {
+        videoModalIframe.src = '';
+      }
+      if (videoModalTitle) {
+        videoModalTitle.textContent = '';
+      }
+      if (videoModalLinks) {
+        videoModalLinks.innerHTML = '';
+      }
+      if (videoModalLinkWrapper) {
+        videoModalLinkWrapper.classList.add('hidden');
+      }
+      document.body.classList.remove('overflow-hidden');
+      if (videoModalCloseTimeout) {
+        clearTimeout(videoModalCloseTimeout);
+      }
+      videoModalCloseTimeout = setTimeout(() => {
+        videoModalElement.classList.add('hidden');
+        videoModalElement.classList.remove('flex');
+        videoModalCloseTimeout = null;
+      }, 250);
+    }
+
+    if (videoModalCloseButton) {
+      videoModalCloseButton.addEventListener('click', closeVideoModal);
+    }
+
+    if (videoModalElement) {
+      videoModalElement.addEventListener('click', (event) => {
+        if (event.target === videoModalElement || event.target.hasAttribute('data-modal-close')) {
+          closeVideoModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !videoModalElement.classList.contains('hidden')) {
+          closeVideoModal();
+        }
+      });
+    }
 
     function initIcons() {
       if (!window.lucide || typeof window.lucide.createIcons !== 'function') return;
@@ -646,83 +904,108 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
     // ===== PORTFOLIO GENERATION =====
     function generatePortfolio() {
       const portfolioContainer = document.getElementById('portfolio-container');
-      portfolioItems.forEach(item => {
-        const portfolioItem = document.createElement('div');
-        portfolioItem.className = `glass overflow-hidden rounded-xl ${item.comingSoon ? 'opacity-70' : 'card-hover cursor-pointer portfolio-item'}`;
+      if (!portfolioContainer) return;
+      portfolioContainer.innerHTML = '';
 
-        if (item.comingSoon) {
-          const iconName = item.title.toLowerCase().includes('game') ? 'gamepad-2' : 'sparkles';
-          portfolioItem.innerHTML = `
-            <div class="relative">
-              <div class="aspect-video bg-[var(--bg-2)] flex items-center justify-center">
-                <div class="text-center p-6">
-                  <div class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center mx-auto mb-3">
-                    <i data-lucide="${iconName}" class="w-6 h-6 text-[var(--violet)]"></i>
-                  </div>
-                  <h3 class="text-xl font-bold">${item.title}</h3>
-                  <p class="text-muted">${item.caption}</p>
-                </div>
-              </div>
-              <div class="absolute inset-0 flex items-center justify-center bg-black/50">
-                <span class="px-4 py-2 rounded-full border border-white/15 text-sm text-muted">Coming Soon</span>
-              </div>
-            </div>
-            <div class="p-4">
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-muted">Coming Soon</span>
-                <span class="text-sm px-2 py-1 rounded-full border border-white/10 text-muted">Preview</span>
-              </div>
-            </div>`;
+      portfolioItems.forEach(item => {
+        const resolvedModal = resolveModalData(item);
+        const isComingSoon = !!item.comingSoon;
+        const isPlayable = !isComingSoon && !!resolvedModal;
+        const portfolioItem = document.createElement('div');
+        portfolioItem.className = `glass overflow-hidden rounded-xl ${isPlayable ? 'portfolio-item cursor-pointer card-hover' : 'opacity-60 cursor-default'}`;
+
+        if (isPlayable && resolvedModal) {
+          portfolioItem.dataset.modalVideoUrl = resolvedModal.url;
+          portfolioItem.dataset.modalTitle = resolvedModal.title || item.title || '';
+          if (resolvedModal.youtubeUrl) portfolioItem.dataset.youtubeUrl = resolvedModal.youtubeUrl;
+          if (resolvedModal.instagramUrl) portfolioItem.dataset.instagramUrl = resolvedModal.instagramUrl;
+          if (resolvedModal.linkedinUrl) portfolioItem.dataset.linkedinUrl = resolvedModal.linkedinUrl;
+          portfolioItem.setAttribute('role', 'button');
+          portfolioItem.tabIndex = 0;
         } else {
-          portfolioItem.innerHTML = `
-            <div class="relative">
-              ${item.tag ? `<div class="latest-tag">${item.tag}</div>` : ''}
-              <div class="portfolio-overlay">
-                ${item.instagramUrl ? `
-                  <a href="${item.instagramUrl}" target="_blank" class="platform-button">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                    <span>Instagram</span>
-                  </a>` : ''}
-                ${item.youtubeUrl ? `
-                  <a href="${item.youtubeUrl}" target="_blank" class="platform-button">
-                    <i data-lucide="youtube" class="w-5 h-5"></i>
-                    <span>YouTube</span>
-                  </a>` : ''}
-              </div>
-              <div class="aspect-video bg-[var(--bg-2)] overflow-hidden">
-                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover opacity-95">
-              </div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <button class="rounded-full p-4 bg-[var(--violet)] text-white" style="animation: pulse-slow 3.5s infinite;">
-                  <i data-lucide="play" class="w-7 h-7"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-4">
-              <h3 class="text-xl font-bold">${item.title}</h3>
-              <p class="text-muted">${item.caption}</p>
-            </div>`;
+          portfolioItem.setAttribute('aria-disabled', 'true');
+          portfolioItem.tabIndex = -1;
         }
+
+        const tags = Array.isArray(item.tags)
+          ? item.tags.filter(Boolean)
+          : item.tag
+            ? [item.tag]
+            : [];
+        const tagsMarkup = tags.length
+          ? `<div class="portfolio-tags">${tags.map(tag => `<span class="portfolio-tag">${tag}</span>`).join('')}</div>`
+          : '';
+
+        const imageMarkup = item.image
+          ? `<img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover opacity-95">`
+          : `<div class="flex flex-col items-center justify-center gap-3 text-center text-muted">
+              <div class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center">
+                <i data-lucide="sparkles" class="w-5 h-5 text-[var(--violet)]"></i>
+              </div>
+              <p class="text-sm uppercase tracking-wide">Preview Coming Soon</p>
+            </div>`;
+
+        const actionMarkup = isPlayable
+          ? `<div class="rounded-full p-4 bg-[var(--violet)] text-white shadow-lg pointer-events-none" style="animation: pulse-slow 3.5s infinite;">
+               <i data-lucide="play" class="w-7 h-7"></i>
+             </div>`
+          : `<span class="px-4 py-2 rounded-full border border-white/20 bg-black/40 text-sm uppercase tracking-wide text-white/80">
+               Coming Soon
+             </span>`;
+
+        portfolioItem.innerHTML = `
+          <div class="relative">
+            ${tagsMarkup}
+            <div class="aspect-video bg-[var(--bg-2)] overflow-hidden flex items-center justify-center">
+              ${imageMarkup}
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              ${actionMarkup}
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-bold">${item.title}</h3>
+            <p class="text-muted">${item.caption}</p>
+          </div>`;
+
         portfolioContainer.appendChild(portfolioItem);
       });
+
       initIcons();
     }
 
     // ===== PORTFOLIO EVENT HANDLERS =====
     function initPortfolioHandlers() {
       document.querySelectorAll('.portfolio-item').forEach(item => {
-        const overlay = item.querySelector('.portfolio-overlay');
+        const modalUrl = item.dataset.modalVideoUrl;
+        if (!modalUrl) return;
         item.addEventListener('click', (e) => {
           if (e.target.tagName === 'A' || e.target.closest('a')) return;
-          const isVisible = overlay.style.display === 'flex';
-          document.querySelectorAll('.portfolio-overlay').forEach(ov => ov.style.display = 'none');
-          overlay.style.display = isVisible ? 'none' : 'flex';
+          e.preventDefault();
+          e.stopPropagation();
+          const modalData = {
+            url: modalUrl,
+            title: item.dataset.modalTitle || (item.querySelector('h3') ? item.querySelector('h3').textContent.trim() : ''),
+            youtubeUrl: item.dataset.youtubeUrl,
+            instagramUrl: item.dataset.instagramUrl,
+            linkedinUrl: item.dataset.linkedinUrl
+          };
+          openVideoModal(modalData);
         });
-      });
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.portfolio-item')) {
-          document.querySelectorAll('.portfolio-overlay').forEach(ov => ov.style.display = 'none');
-        }
+
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const modalData = {
+              url: modalUrl,
+              title: item.dataset.modalTitle || (item.querySelector('h3') ? item.querySelector('h3').textContent.trim() : ''),
+              youtubeUrl: item.dataset.youtubeUrl,
+              instagramUrl: item.dataset.instagramUrl,
+              linkedinUrl: item.dataset.linkedinUrl
+            };
+            openVideoModal(modalData);
+          }
+        });
       });
     }
 
@@ -744,4 +1027,3 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
   </script>
 </body>
 </html>
-
