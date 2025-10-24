@@ -159,27 +159,24 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
     .hero-title-main { display: block; }
     .hero-title-pill {
       display: inline-block;
-      margin-top: 0.15em; /* tighter to overlap */
-      transform: translateY(-0.6em) rotate(-2deg); /* stronger overlap + slight rotation */
-      padding: 0.25em 0.7em;
-      border-radius: 0.5rem; /* rectangle with gentle rounding */
-      /* Semi-transparent rectangle ~70% opacity */
-      background: linear-gradient(160deg,
-        rgba(167,139,250,0.7) 0%,
-        rgba(139,92,246,0.7) 20%,
-        rgba(76,29,149,0.7) 100%);
-      color: #fff;
-      box-shadow: 0 16px 40px -20px rgba(76,29,149,0.5), 0 10px 24px -16px rgba(0,0,0,0.55);
-      border: none; /* remove white border */
+      transform: none;
+      padding: 0;
+      padding-bottom: 10px;
+      border-radius: 0;
+      background: linear-gradient(
+180deg, #a855f7 0%, #5b21b6 100%);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      box-shadow: none;
+      border: none;
       font-family: 'Dancing Script', cursive; /* script font */
       font-weight: 700;
       line-height: 1.05;
       letter-spacing: 0.2px;
       z-index: 1;
-      /* embossed text look using opposing highlights */
-      text-shadow:
-        -1px -1px 0 rgba(255,255,255,0.22),
-         1px  1px 0 rgba(0,0,0,0.55);
+      text-shadow: 0 10px 24px rgba(76,29,149,0.55);
+          transform: translateY(-0.6em) rotate(-2deg);
     }
 
     /* ===== Founders showcase ===== */
@@ -747,5 +744,4 @@ radial-gradient(circle at 18% -12%, rgba(238,231,255,0.1), transparent 50%),
   </script>
 </body>
 </html>
-
 
